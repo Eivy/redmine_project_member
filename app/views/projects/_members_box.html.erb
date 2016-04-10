@@ -1,0 +1,18 @@
+<% if @users_by_role.any? %>
+  <% content_for :header_tags do %>
+    <% stylesheet_link_tag 'project_member', :plugin => 'redmine_project_member' %>
+  <% end %>
+  <div class="members box">
+    <h3><%= link_to l(:label_member_plural), :controller => 'project_member', :action => 'index' %></h3>
+    <% @users_by_role.keys.sort.each do |role| %>
+      <span class="label"><%= role %>:</span>
+      <div class='wrap'>
+        <% @users_by_role[role].sort.collect.each do |u| %>
+          <div>
+            <%= link_to_user u %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
