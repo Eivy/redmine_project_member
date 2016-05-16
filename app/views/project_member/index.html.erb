@@ -18,7 +18,14 @@
             <td><%= m.roles.sort.collect(&:to_s).join(',') %></td>
             <td><%= link_to @issues.open.where(:assigned_to_id => m.user_id).count, project_issues_path(@project, :set_filter => 1, :assigned_to_id => m.user_id) %></td>
             <td><%= link_to @issues.open.where(:author_id => m.user_id).count, project_issues_path(@project, :set_filter => 1, :author_id => m.user_id) %></td>
-            <td><%= format_time(User.find(m.user_id).last_login_on) %></td>
+            <%
+              u = User.find_by_id(m.user_id)
+              if u != nil
+            %>
+              <td><%= format_time(u.last_login_on) %></td>
+            <% else %>
+              <td></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
