@@ -2,7 +2,7 @@ Redmine::Plugin.register :redmine_project_member do
   name 'Redmine Project Member plugin'
   author 'Eivy'
   description 'This is a plugin for Redmine'
-  version '0.0.1'
+  version '0.0.2'
   url 'https://github.com/Eivy/redmine_project_member'
   author_url 'https://github.com/Eivy/'
   permission :project_member, { :project_member => :index }, :public => true
